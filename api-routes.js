@@ -6,7 +6,7 @@ router.get('/', function (req, res) {
     });
 });
 
-var postController = require('../Blog/postController');
+var postController = require('./postController');
 
 router.route('/posts')
     .get(postController.index)
