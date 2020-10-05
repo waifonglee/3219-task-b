@@ -1,7 +1,7 @@
 Post = require('./postModel');
 
-exports.index = function(req, res) {
-    Post.get(function(err, posts) {
+exports.index = (req, res) => {
+    Post.get((err, posts) => {
         if (err) {
             res.json({
                 status: "error",
@@ -19,13 +19,13 @@ exports.index = function(req, res) {
 };
 
 //create post
-exports.new = function(req, res) {
+exports.new = (req, res) => {
     var post = new Post();
     post.content = req.body.content;
     post.title = req.body.title;
     post.author = req.body.author;
 
-    post.save(function (err) {
+    post.save((err) => {
         if (err) {
             res.json(err);
         } else {
@@ -39,8 +39,8 @@ exports.new = function(req, res) {
 
 };
 
-exports.view = function(req, res) {
-    Post.findById(req.params.post_id, function(err, post) {
+exports.view = (req, res) => {
+    Post.findById(req.params.post_id, (err, post) => {
         if (err) {
             res.send(err);
         } else {
@@ -52,8 +52,8 @@ exports.view = function(req, res) {
     });
 };
 
-exports.update = function(req, res) {
-    Post.findById(req.params.post_id, function(err, post) {
+exports.update = (req, res) => {
+    Post.findById(req.params.post_id, (err, post) => {
         if (err) {
             res.send(err);
         } else {
@@ -72,10 +72,10 @@ exports.update = function(req, res) {
     });
 };
 
-exports.delete = function(req, res) {
-    Post.remove({
+exports.delete = (req, res) => {
+    Post.deleteOne({
         _id: req.params.post_id
-    }, function(err, post) {
+    }, (err, post) => {
         if (err)
             res.send(err);
         res.json({

@@ -33,6 +33,8 @@ app.get('/', (req, res) => res.send('Hello'));
 // Use Api routes in the App
 app.use('/api', apiRoutes);
 // Launch app to listen to specified port
-app.listen(port, function () {
+const server = app.listen(port, function () {
     console.log("Running blog on port " + port);
 });
+
+module.exports = server;
