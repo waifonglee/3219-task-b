@@ -16,6 +16,13 @@ describe('posts', () => {
         });
     });
 
+    after(done => {
+        mongoose.models = {};
+        mongoose.modelSchemas = {};
+        mongoose.connection.close();
+        done();
+    });
+
     describe('/GET posts', () => {
         it("should get all posts", (done) => {
             chai.request(app)
@@ -124,3 +131,6 @@ describe('posts', () => {
         });
     });
 });
+
+
+
