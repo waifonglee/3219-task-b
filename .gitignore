@@ -1,3 +1,4 @@
 # Environment Variables
 variables.env
 node_modules
+.serverless
